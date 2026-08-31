@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/partner_booking?useSSL=false&serverTimezone=Asia/Bangkok&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456a@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
