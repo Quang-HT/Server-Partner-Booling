@@ -11,7 +11,13 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "partner_booking")
+@Table(
+        name = "partner_booking",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uk_partner_booking_hold", columnNames = "hold_id"),
+                @UniqueConstraint(name = "uk_partner_booking_idempotency", columnNames = "idempotency_key")
+        }
+)
 public class PartnerBooking {
 
     @Id
@@ -33,6 +39,9 @@ public class PartnerBooking {
 
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
+
+    @Column(name = "currency", length = 3)
+    private String currency;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

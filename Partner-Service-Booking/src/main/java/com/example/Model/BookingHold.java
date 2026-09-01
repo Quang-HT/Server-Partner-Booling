@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -26,6 +27,15 @@ public class BookingHold {
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "unit_price", precision = 19, scale = 2)
+    private BigDecimal unitPrice;
+
+    @Column(name = "total_amount", precision = 19, scale = 2)
+    private BigDecimal totalAmount;
+
+    @Column(name = "currency", length = 3)
+    private String currency;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

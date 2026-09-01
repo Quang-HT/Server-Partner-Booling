@@ -83,6 +83,12 @@ public enum PartnerErrorCode implements BaseErrorCode {
             HttpStatus.NOT_FOUND
     ),
 
+    BOOKING_NOT_CANCELLABLE(
+            "PARTNER_409_004",
+            "Booking cannot be cancelled in its current status",
+            HttpStatus.CONFLICT
+    ),
+
     IDEMPOTENCY_CONFLICT(
             "PARTNER_409_003",
             "Idempotency key conflict",

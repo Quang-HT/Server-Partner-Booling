@@ -37,6 +37,14 @@ public interface InventoryRepository extends JpaRepository<Inventory, String> {
             InventoryStatus status
     );
 
+    List<Inventory> findAllByInventoryIdIn(Collection<String> inventoryIds);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT i FROM Inventory i WHERE i.inventoryId IN :inventoryIds ORDER BY i.inventoryId")
+    List<Inventory> findAllByInventoryIdInForUpdate(
+            @Param("inventoryIds") Collection<String> inventoryIds
+    );
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""
     SELECT i FROM Inventory i
